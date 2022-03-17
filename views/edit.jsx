@@ -5,8 +5,7 @@ function Edit ({bread, index}) {
     return (
       <Default>
         <h2>Edit a bread</h2>
-        {/* <a href={`/breads/${index}/edit`}><button>Edit</button></a> */}
-        <form action={`/breads/${index}?_method=PUT`} method="POST" >
+        <form action={`/breads/${index}?_method=PUT`} method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
@@ -21,7 +20,7 @@ function Edit ({bread, index}) {
             name="image"
             id="image"
             defaultValue={bread.image}
-          />
+            />
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"

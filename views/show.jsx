@@ -1,37 +1,35 @@
 const React = require('react')
 const Default = require('./layouts/Default')
 
-function Show ({bread, index}) {
-    // Confirm we are getting our bread data in the terminal.
+function Show ({bread}) {
     console.log(bread)
-    console.log(index)
-      return (
+
+    return (
         <Default>
-        <h3>{bread.name}</h3>
-        <a href={`/breads/${index}/edit`}><button>Edit</button></a>
-        <form action={`/breads/${index}?_method=DELETE`} method="POST">
-          <input type='submit' value="DELETE"/>
-        </form>
-        <p>
-          and it
-          {
-            bread.hasGluten
-            ? <span> does </span>
-            : <span> does NOT </span>
-          }
-          have gluten.
-        </p>
-        <h4>Ingridents</h4>
-        <ul>
-        {bread.ingridents.map(ingrident =><li key={index}>{ingridents}</li>)}
-        </ul>
-        <ol>
-        {bread.directions.map(direction =><li key={index}>{directions}</li>)}
-        </ol>
-        <img src={bread.image} alt={bread.name} />
-        <li><a href="/breads">Go home</a></li>
-         </Default>
-      )
-  }
-  
+        <a href="/breads">Go home</a>
+        <div className='show-container'>
+          <div>
+            <h3>{bread.name}</h3>
+          <form action={`/breads/${bread.id}?_method=DELETE`} method="POST">
+            <input type='submit' value="DELETE"/>
+          </form>
+          <a href={`/breads/${bread.id}/edit`}><button>Edit</button></a>
+          <p>
+            and it
+            {
+              bread.hasGluten
+              ? <span> does </span>
+              : <span> does NOT </span>
+            }
+            have gluten.
+          </p>
+          <div>
+          <img src={bread.image} alt={bread.name} />
+          </div>
+          </div>
+        </div>
+      </Default>
+    )
+}
+
 module.exports = Show
